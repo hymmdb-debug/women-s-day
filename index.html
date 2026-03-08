@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Women's Day ❤️</title>
+<style>
+body{
+margin:0;
+font-family:'Segoe UI',sans-serif;
+background:linear-gradient(135deg,#ff7eb3,#ffb6d9,#ffd6e7);SS
+height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+overflow:hidden;
+text-align:center;
+color:white;
+}
+
+.card{
+background:rgba(255,255,255,0.15);
+backdrop-filter:blur(12px);
+padding:45px;
+border-radius:25px;
+box-shadow:0 15px 40px rgba(0,0,0,0.25);
+max-width:650px;
+}
+
+h1{
+font-size:42px;
+margin-bottom:10px;
+}
+
+p{
+font-size:20px;
+line-height:1.7;
+}
+
+button{
+margin-top:25px;
+padding:14px 28px;
+border:none;
+border-radius:30px;
+font-size:18px;
+background:#ff2e93;
+color:white;
+cursor:pointer;
+transition:0.3s;
+}
+
+button:hover{
+background:#ff0f7b;
+transform:scale(1.05);
+}
+
+#extra{
+margin-top:25px;
+font-size:24px;
+display:none;
+}
+
+/* floating hearts */
+.heart{
+position:absolute;
+font-size:20px;
+animation:floatUp linear infinite;
+opacity:0.8;
+}
+
+@keyframes floatUp{
+0%{transform:translateY(100vh) scale(0.5);opacity:0}
+50%{opacity:1}
+100%{transform:translateY(-10vh) scale(1.2);opacity:0}
+}
+
+</style>
+</head>
+<body>
+
+<audio autoplay loop>
+<source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3" type="audio/mpeg">
+</audio>
+
+<div class="card">
+<h1>Happy Women's Day 💐</h1>
+
+<p>
+To the most amazing girl in my life.<br><br>
+You are strong, beautiful, and incredibly special to me.<br>
+My world feels brighter because you are in it.<br><br>
+Thank you for being you. ❤️
+</p>
+
+<button onclick="showMessage()">Click Here</button>
+
+<p id="extra">You make my life happier every day. I love you so much 💖</p>
+</div>
+
+<script>
+function showMessage(){
+ document.getElementById('extra').style.display='block';
+ launchConfetti();
+}
+
+/* floating hearts generator */
+function createHearts(){
+ const heart=document.createElement('div');
+ heart.className='heart';
+ heart.innerHTML='💖';
+ heart.style.left=Math.random()*100+'vw';
+ heart.style.animationDuration=(3+Math.random()*4)+'s';
+ document.body.appendChild(heart);
+
+ setTimeout(()=>{heart.remove();},7000);
+}
+
+setInterval(createHearts,500);
+
+/* confetti effect */
+function launchConfetti(){
+ for(let i=0;i<80;i++){
+  const conf=document.createElement('div');
+  conf.style.position='fixed';
+  conf.style.left=Math.random()*100+'vw';
+  conf.style.top='-10px';
+  conf.style.fontSize='20px';
+  conf.innerHTML=['💖','💐','✨','🌸'][Math.floor(Math.random()*4)];
+  conf.style.transition='transform 3s linear';
+  document.body.appendChild(conf);
+  setTimeout(()=>{conf.style.transform='translateY(100vh)';},50);
+  setTimeout(()=>{conf.remove();},3000);
+ }
+}
+</script>
+
+</body>
+</html>
