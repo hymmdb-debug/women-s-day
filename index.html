@@ -68,8 +68,17 @@ pointer-events:none;
 
 @keyframes fall{
 0%{
-transform:translateY(-10vh) rotate(0deg);
+transform:translateY(-10vh) translateX(0) rotate(0deg);
 opacity:0;
+}
+10%{opacity:1}
+50%{
+transform:translateY(50vh) translateX(var(--drift)) rotate(180deg);
+}
+100%{
+transform:translateY(110vh) translateX(calc(var(--drift) * -1)) rotate(360deg);
+opacity:0;
+}
 }
 10%{opacity:1}
 100%{
@@ -115,8 +124,12 @@ function createFlower(){
  f.className='flower';
  f.innerHTML=flowers[Math.floor(Math.random()*flowers.length)];
 
- // random horizontal position
+ // random horizontal starting position
  f.style.left=Math.random()*100+'vw';
+
+ // sideways drifting amount so they don't fall in a straight line
+ const drift=(Math.random()*200-100)+'px';
+ f.style.setProperty('--drift',drift);
 
  // random size
  f.style.fontSize=(18+Math.random()*22)+'px';
@@ -129,7 +142,7 @@ function createFlower(){
  setTimeout(()=>{f.remove();},10000);
 }
 
-setInterval(createFlower,350);
+setInterval(createFlower,300);
 
 /* confetti when clicking */
 function launchConfetti(){
@@ -151,4 +164,3 @@ function launchConfetti(){
 
 </body>
 </html>
-
